@@ -1,14 +1,13 @@
-const http = require('http') 
 const { Browser } = require('selenium-wrapper-ed')
+const express = require('express')
+const app = express()
 
 const automate = async () => {
     await Browser.openPage('https://app.resemble.ai')
 }
 
-const server = http.createServer(function (req, res) {
-    http.createServer() 
-    res.send('Hi!') 
+app.get('/', (req, res) => {
     automate()
-}) 
+})
 
-server.listen(process.env.PORT)  
+app.listen(process.env.PORT)
